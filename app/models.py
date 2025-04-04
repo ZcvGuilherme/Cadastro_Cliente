@@ -1,5 +1,7 @@
 import sqlite3
 
+### CONEXÃO COM O BANCO DE DADOS ###
+
 def conectar():
     conexao = sqlite3.connect("cadastro_clientes.db")
     return conexao
