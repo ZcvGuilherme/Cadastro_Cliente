@@ -25,4 +25,20 @@ def criar_tabela_clientes():
         """)
 
     conexao.commit()
+    cursor.close()
     conexao.close()
+    
+    def cadastrar_cliente(nome,idade,telefone,email,sexo):
+        conexao = conectar()
+        cursor = conexao.cursor()
+        
+        cursor.execute("""
+                       INSERT INTO clientes (nome, idade, telefone, email, sexo) 
+                    VALUES (?, ?, ?, ?, ?)""",
+                    (nome,idade,telefone,email,sexo))
+        
+        conexao.commit()
+        cursor.close()
+        conexao.close()
+        
+        
