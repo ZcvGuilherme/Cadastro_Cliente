@@ -14,13 +14,13 @@ def criar_tabela_clientes():
 
 
     cursor.execute("""
-               CREATE TABLE IF NOT EXISTS clientes (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                    nome TEXT NOT NULL, 
-                    idade INTEGER NOT NULL,
-                    telefone TEXT,
-                    email TEXT,
-                    sexo TEXT (1) CHECK (sexo IN ('M','F'))
+            CREATE TABLE IF NOT EXISTS clientes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                nome TEXT NOT NULL, 
+                idade INTEGER NOT NULL,
+                telefone TEXT,
+                email TEXT,
+                sexo TEXT CHECK (sexo IN ('M', 'F'))
         );
         """)
 
