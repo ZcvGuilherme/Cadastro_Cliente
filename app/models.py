@@ -28,6 +28,8 @@ def criar_tabela_clientes():
     cursor.close()
     conexao.close()
     
+    
+    ### Cadastro de clientes ###
     def cadastrar_cliente(nome,idade,telefone,email,sexo):
         conexao = conectar()
         cursor = conexao.cursor()
