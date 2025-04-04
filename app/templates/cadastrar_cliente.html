@@ -5,20 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="logoverde.png" type="image/x-icon">
     <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
     
 </head>
 <body>
     <div class="container">
-        <h1>Cadastrando de Cliente</h1>
+        <h1>Cadastrar Cliente</h1>
         <hr>
         
         <form action="{{url_for('novo_cliente')}}" method="post">
-
-            <div class="id_cliente">
-                <label for="id_cliente">Id Cliente</label><br>
-                <input type="number" name="id_cliente">
-            </div>
 
             <div class="nome">
                 <label for="nome">Nome</label><br>
@@ -43,6 +38,9 @@
                 <input type="tel" name="tell">
             </div>
             
+            <select> 
+                <option> </option>
+            </select>
             <!--Data de nacimento-->
             <div class="data_nasc">
                 <label for="data_nasc">Data de Nacimento</label><br>
