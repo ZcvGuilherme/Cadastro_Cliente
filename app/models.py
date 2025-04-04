@@ -8,9 +8,7 @@ def conectar():
 def criar_tabela_clientes():
     conexao = conectar()
     cursor = conexao.cursor()
-
-
-
+    
     cursor.execute("""
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -48,7 +46,4 @@ def listar_clientes():
         cursor.close()
         conexao.close()
         return clientes
-    
-    
-    
-    #comentario
+
