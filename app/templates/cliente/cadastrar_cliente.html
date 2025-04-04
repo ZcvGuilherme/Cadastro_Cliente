@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logoverde.png" type="image/x-icon">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrando de Cliente</h1>
+        <hr>
+        
+        <form action="{{url_for('novo_cliente')}}" method="post">
+
+            <div class="id_cliente">
+                <label for="id_cliente">Id Cliente</label><br>
+                <input type="number" name="id_cliente">
+            </div>
+
+            <div class="nome">
+                <label for="nome">Nome</label><br>
+                <input type="text" name="nome">
+            </div>
+
+            <!--Gmail-->
+            <div class="e-mail">
+                <label for="e-mail">E-mail</label><br>
+                <input type="text" name="e-mail" class="e-mail">
+            </div>
+
+            <!--Cidade-->
+            <div>
+                <label for="cidade">Cidade</label><br>
+                <input type="text" name="cidade">
+            </div>
+            
+            <!--Telefone-->
+            <div>
+                <label for="tell">Telefone</label><br>
+                <input type="tel" name="tell">
+            </div>
+            
+            <!--Data de nacimento-->
+            <div class="data_nasc">
+                <label for="data_nasc">Data de Nacimento</label><br>
+                <input type="date" name="data_nasc">
+            </div>
+            <input type="submit" value="Adicionar">
+        </form>
+    </div>
+</body>
+</html>
