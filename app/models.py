@@ -51,3 +51,6 @@ def listar_clientes():
         conexao.close()
         return clientes
     
+    
+    
+    #comentario
