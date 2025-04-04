@@ -26,3 +26,5 @@ def criar_tabela_clientes():
 
     conexao.commit()
     conexao.close()
+
+criar_tabela_clientes()
