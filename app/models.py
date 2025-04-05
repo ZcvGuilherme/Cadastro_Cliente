@@ -46,4 +46,18 @@ def listar_clientes():
         cursor.close()
         conexao.close()
         return clientes
+    
+#deletar pessoa (busca por ID)
 
+#buscar por ID
+#buscar por nome
+#buscar por idade
+#buscar por telefone
+#buscar por email
+#buscar por sexo
+
+#mostrar todos, por ordem alfabética
+#ordem alfabética, so que decrescente
+
+#ordem numérica (id) 
+#ordem numérica (id) decrescente
