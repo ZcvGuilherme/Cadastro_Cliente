@@ -12,7 +12,7 @@ body {
     text-align: center; /* Centraliza o texto do h1 */
     width: 100%;
     max-width: 400px; /* Ajuste conforme necessário */
-    background-color: rgb(108, 221, 184);
+    background-color: rgb(140, 226, 198);
 }
 form {
     display: flex;
