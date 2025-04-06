@@ -63,3 +63,6 @@ def listar_clientes():
 #ordem numérica (id) decrescente
 
 
+if __name__ == "__main__":
+    criar_tabela_clientes()
+    print(listar_clientes())
