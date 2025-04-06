@@ -12,7 +12,7 @@
         <h1>Cadastrar Cliente</h1>
         <hr>
         
-        <form action="{{url_for('novo_cliente')}}" method="post">
+        <form action="{{url_for('novo_cliente')}}" method="POST">
 
             <div class="nome">
                 <label for="nome">Nome</label><br>
@@ -21,14 +21,14 @@
 
             <!--Gmail-->
             <div class="e-mail">
-                <label for="e-mail">E-mail</label><br>
-                <input type="text" name="e-mail" class="e-mail">
+                <label for="email">E-mail</label><br>
+                <input type="text" name="email" class="e-mail">
             </div>
 
             <!--Telefone-->
             <div>
-                <label for="tell">Telefone</label><br>
-                <input type="tel" name="tell">
+                <label for="telefone">Telefone</label><br>
+                <input type="tel" name="telefone">
             </div>
             
             <!--Data de nacimento-->
@@ -44,9 +44,9 @@
                         <label for="sexo">Sexo</label><br>
                        <select>
                         <option value=""></option>
-                        <option value="Maculino">Masculino</option>
+                        <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
-                       </select>
+                       </select name="sexo">
                     </div>
                 </section>
             </div>

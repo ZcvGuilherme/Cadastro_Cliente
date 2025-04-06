@@ -19,7 +19,6 @@ def criar_tabela_clientes():
                 sexo TEXT CHECK (sexo IN ('M', 'F'))
         );
         """)
-
     conexao.commit()
     cursor.close()
     conexao.close()
@@ -64,5 +63,4 @@ def listar_clientes():
 
 
 if __name__ == "__main__":
-    criar_tabela_clientes()
-    print(listar_clientes())
+    print("ok")
