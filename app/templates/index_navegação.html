@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/app/static/imagem/logoverde.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
     <title>Navegador</title> 
-    <link rel="stylesheet" href="/app/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 <body>
-    <div classe="navegador" >
+    <div class="navegador">
         <h1>       
-            <a href="cadastrar_cliente.html" target="_self"> <input type="submit" value="Cadastrar Cliente" ></a>
-            <a href="gerenciar_cliente.html"><input type="submit" value="Pesquisar Cliente"></a>
+            <a href="{{ url_for('cadastrar_cliente') }}">
+                <button type="button">Cadastrar Cliente</button>
+            </a>
+            <a href="{{ url_for('gerenciar_clientes') }}">
+                <button type="button">Pesquisar Cliente</button>
+            </a>
         </h1>
     </div>
 </body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app/static/imagem/logoverde.png" type="image/x-icon">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="/app/static/style.css">        
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Cliente</h1>
+        <hr>
+        
+        <form action="{{url_for('novo_cliente')}}" method="POST">
+
+            <div class="nome">
+                <label for="nome">Nome</label><br>
+                <input type="text" name="nome">
+            </div>
+
+            <!--Gmail-->
+            <div class="e-mail">
+                <label for="email">E-mail</label><br>
+                <input type="text" name="email" class="e-mail">
+            </div>
+
+            <!--Telefone-->
+            <div>
+                <label for="telefone">Telefone</label><br>
+                <input type="tel" name="telefone">
+            </div>
+            
+            <!--Data de nacimento-->
+            <div class="data_nasc">
+                <label for="data_nasc">Data de Nacimento</label><br>
+                <input type="date" name="data_nasc">
+            </div>
+
+            <div>
+                
+                <section>
+                    <div class="sexo">
+                        <label for="sexo">Sexo</label><br>
+                       <select>
+                        <option value=""></option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                       </select name="sexo">
+                    </div>
+                </section>
+            </div>
+
+            <input type="submit" value="Adicionar">
+
+            <h3>
+                <p><small>Voltar a página inicial.</small></p>
+                <p><a href="index_navegação.html" rel="prev"><img src="/app/static/imagem/setade voltar.png" alt=""></a>
+            </h3>
+        </form>
+    </div>
+</body>
+</html>
