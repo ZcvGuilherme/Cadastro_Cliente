@@ -1,4 +1,5 @@
 
+
 body {
     margin: 0;
     padding: 0;
@@ -11,23 +12,36 @@ body {
 .container {
     text-align: center; /* Centraliza o texto do h1 */
     width: 100%;
-    max-width: 200px; /* Ajuste conforme necessário */
+    max-width: 400px; /* Ajuste conforme necessário */
+    background-color: rgb(176, 230, 212);
 }
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 20px; /* Espaço entre o h1 e o formulário */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
 }
 input[type="submit"] {
     cursor: pointer;
-    background-color:rgb(198, 187, 35);
-    color: white;
+    background-color:rgb(98, 179, 225);
     border: none;
     padding: 10px;
-    border-radius: 5px;
-}
-input[type="submit"]:hover {
-    background-color:rgb(9, 39, 72);
+    border-radius: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 300px;  /* Largura da caixa */
+    height: 40px; /* Altura da caixa */
+    font-size: 18px;  /* Tamanho da fonte dentro da caixa */
+    border: 1px solid #040404;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px; /*margens das laterais */
+    margin-right: 10px;
 }
 
+input[type="submit"]:hover {
+    background-color:rgb(87, 151, 221);
+}
