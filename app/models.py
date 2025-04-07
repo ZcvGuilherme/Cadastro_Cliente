@@ -23,7 +23,7 @@ def criar_tabela_clientes():
     cursor.close()
     conexao.close()
     
-def cadastrar_cliente(nome,idade,telefone,email,sexo):
+def cadastrar_cliente_tabela(nome,idade,telefone,email,sexo):
         conexao = conectar()
         cursor = conexao.cursor()
 
