@@ -61,6 +61,3 @@ def listar_clientes():
 #ordem numérica (id) 
 #ordem numérica (id) decrescente
 
-
-if __name__ == "__main__":
-    print("ok")

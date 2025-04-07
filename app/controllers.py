@@ -34,10 +34,9 @@ def configurar_rotas(app):
                 
             idade = calcular_idade(data_nasc)
             models.cadastrar_cliente_tabela(nome, idade, telefone, email, sexo)
-            return redirect(url_for('gerenciar_clientes'))
+            return redirect(url_for('cadastrar_cliente'))
         except Exception as e:
             return f"Erro ao cadastrar cliente: {str(e)}", 500
-
 
 def calcular_idade(data_nasc):
     if isinstance(data_nasc, str):

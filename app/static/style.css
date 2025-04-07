@@ -45,3 +45,25 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color:rgb(87, 151, 221);
 }
+
+.campo-telefone {
+    margin-bottom: 1rem;
+}
+
+.campo-telefone input {
+    padding: 5px;
+    font-size: 1em;
+}
+
+.erro-telefone {
+    display: none;
+    color: rgb(212, 28, 28);
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input.erro {
+    border: 2px solid rgb(209, 113, 113);
+    background-color: #ffe5e5;
+}

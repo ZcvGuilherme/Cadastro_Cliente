@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
     <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">        
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+        
 </head>
 <body>
     <div class="container">
@@ -24,9 +26,10 @@
                 <input type="text" name="email" class="email">
             </div>
 
-            <div>
+            <div class="campo-telefone">
                 <label for="telefone">Telefone</label><br>
-                <input type="tel" name="telefone">
+                <span class="erro-telefone">Insira no formato (99) 99999-9999</span>
+                <input type="tel" name="telefone" id="telefone">
             </div>
             
             <div class="data_nasc">
