@@ -48,6 +48,40 @@ def listar_clientes():
     
 #deletar pessoa (busca por ID)
 
+def deletar_cliente(id):
+        conexao = conectar()
+        cursor = conexao.cursor()
+        
+        cursor.execute("DELETE FROM clientes WHERE id = ?",(id,))
+        cliente = cursor.fetchone()
+        
+### Confirmação de exclusão ###        
+        
+        if cliente:
+            print("\n Cliente encontrado:")
+            print(f"ID:{cliente[0]}")
+            print(f"Nome:{cliente[1]}")
+            print(f"Idade:{cliente[2]}")
+            print(f"telefone:{cliente[3]}")
+            print(f"Email:{cliente[4]}")
+            print(f"Sexo:{cliente[5]}")
+                       
+            
+        confirmar = input("Tem certeza que deseja deletar esse cliente? (s/n):").lower()
+        
+        if confirmar == "s":
+            cursor.execute("DELETE FROM clientes WHERE id = ?",(id,))
+            conexao.commit()
+            print("Cliente deletado com sucesso!")
+        else: 
+            print("Cliente não deletado.")
+            
+        print("Cliente não encontrado com o ID {id}.")
+        
+        cursor.close()
+        conexao.close()
+                 
+
 #buscar por ID
 #buscar por nome
 #buscar por idade
