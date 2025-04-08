@@ -63,6 +63,10 @@ input[type="submit"]:hover {
     display: block;
 }
 
+.navegador{
+ background-color: aqua;
+}
+
 input.erro {
     border: 2px solid rgb(209, 113, 113);
     background-color: #ffe5e5;
