@@ -3,21 +3,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const telefoneInput = document.querySelector('input[name="telefone"]');
     const erroTelefone = document.querySelector('.erro-telefone');
 
-    erroTelefone.style.display = 'none'
+    if (!form || !telefoneInput || !erroTelefone) return;
 
-    // Máscara para o campo de telefone
-    telefoneInput.addEventListener('input', () => {
-        let valor = telefoneInput.value.replace(/\D/g, '');
+    // Oculta o erro inicialmente
+    erroTelefone.style.display = 'none';
+
+    // Função para validar o formato do telefone
+    function validarTelefone(telefone) {
+        const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+        return regexTelefone.test(telefone);
+    }
+
+    // Função para aplicar a máscara no telefone
+    function aplicarMascaraTelefone(valor) {
+        valor = valor.replace(/\D/g, '');
 
         if (valor.length > 11) valor = valor.slice(0, 11); // máximo de 11 dígitos
 
         if (valor.length > 6) {
-            telefoneInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
+            return `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
         } else if (valor.length > 2) {
-            telefoneInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
+            return `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
         } else {
-            telefoneInput.value = `(${valor}`;
+            return `(${valor}`;
         }
+    }
+
+    // Aplica a máscara conforme o usuário digita
+    telefoneInput.addEventListener('input', () => {
+        telefoneInput.value = aplicarMascaraTelefone(telefoneInput.value);
 
         // Esconde erro enquanto digita
         telefoneInput.classList.remove('erro');
@@ -27,12 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validação no envio do formulário
     form.addEventListener('submit', (e) => {
         const telefone = telefoneInput.value;
-        const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
 
-        if (!regexTelefone.test(telefone)) {
+        if (!validarTelefone(telefone)) {
             e.preventDefault();
 
-            // Mostra erro
             telefoneInput.classList.add('erro');
             erroTelefone.style.display = 'block';
 
