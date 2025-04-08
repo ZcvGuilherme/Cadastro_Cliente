@@ -47,7 +47,6 @@ def listar_clientes():
         return clientes
     
 #deletar pessoa (busca por ID)
-
 def deletar_cliente(id):
         conexao = conectar()
         cursor = conexao.cursor()
