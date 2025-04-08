@@ -3,59 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/tests/static/imagem/logoverde.png" type="image/x-icon">
+    <link rel="shortcut icon" href= "/app/static/imagem/logoverde.png" type="image/x-icon">
     <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="/tests/static/style.css">        
+    <link rel="stylesheet" href="/app/static/style.css">
+    <script src="/app/static/script.js"></script>
+        
 </head>
 <body>
     <div class="container">
         <h1>Cadastrar Cliente</h1>
         <hr>
         
-        <form action="{{url_for('novo_cliente')}}" method="POST">
+        <form action="novo_cliente'" method="POST">
 
             <div class="nome">
                 <label for="nome">Nome</label><br>
                 <input type="text" name="nome">
             </div>
 
-            <!--Gmail-->
-            <div class="e-mail">
+            <div class="email">
                 <label for="email">E-mail</label><br>
-                <input type="text" name="email" class="e-mail">
+                <input type="email" name="email" class="email">
             </div>
 
-            <!--Telefone-->
-            <div>
+            <div class="campo-telefone">
                 <label for="telefone">Telefone</label><br>
-                <input type="tel" name="telefone">
+                <span class="erro-telefone">Insira no formato (99) 99999-9999</span>
+                <input type="tel" name="telefone" id="telefone">
             </div>
             
-            <!--Data de nacimento-->
             <div class="data_nasc">
-                <label for="data_nasc">Data de Nacimento</label><br>
+                <label for="data_nasc">Data de Nascimento</label><br>
                 <input type="date" name="data_nasc">
             </div>
 
-            <div>
-                
-                <section>
-                    <div class="sexo">
-                        <label for="sexo">Sexo</label><br>
-                       <select>
+            <section>
+                <div class="sexo">
+                    <label for="sexo">Sexo</label><br>
+                    <select name="sexo">
                         <option value=""></option>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
-                       </select name="sexo">
-                    </div>
-                </section>
-            </div>
+                    </select>
+                </div>
+            </section>
 
             <input type="submit" value="Adicionar">
 
             <h3>
-                <p><small>Voltar a página inicial.</small></p>
-                <p><a href="index_navegação.html" rel="prev"><img src="/tests/static/imagem/setade voltar.png" alt=""></a>
+                <p><small>Voltar à página inicial.</small></p>
+                <p>
+                    <a href="index_navegação.html" rel="prev">
+                        <img src="/app/static/imagem/setade voltar.png" alt="Setade voltar">
+                    </a>
+                </p>
             </h3>
         </form>
     </div>
