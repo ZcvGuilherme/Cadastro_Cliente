@@ -2,18 +2,37 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
-    <title>Gerenciar Cliente</title>
-    
+    <title>Gerenciar Clientes</title>
 </head>
 <body>
-    <h1>
-        
-    </h1>
-     <h3>
-        <p><small>Voltar a página inicial.</small></p>
-        <p><a href="{{ url_for('pagina_inicial') }}" rel="prev"><img src="{{ url_for('static', filename='imagem/setade voltar.png') }}" alt=""></a>
-    </h3>
+    <h1>Lista de Clientes</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Sexo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.idade }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.sexo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('pagina_inicial') }}">Voltar</a>
 </body>
 </html>

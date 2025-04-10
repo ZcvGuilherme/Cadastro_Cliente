@@ -37,14 +37,17 @@ def cadastrar_cliente_tabela(nome,idade,telefone,email,sexo):
         conexao.close()
         
 def listar_clientes():
-        conexao = conectar()
-        cursor = conexao.cursor()
-        
-        cursor.execute("SELECT * FROM clientes")
-        clientes = cursor.fetchall()
-        cursor.close()
-        conexao.close()
-        return clientes
+    conexao = conectar()
+    conexao.row_factory = sqlite3.Row  
+    cursor = conexao.cursor()
+    
+    cursor.execute("SELECT * FROM clientes")
+    clientes = cursor.fetchall()
+    
+    cursor.close()
+    conexao.close()
+    return clientes
+
     
 #deletar pessoa (busca por ID)
 def deletar_cliente(id):

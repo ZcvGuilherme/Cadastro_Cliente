@@ -13,8 +13,12 @@ def configurar_rotas(app):
     
     @app.route("/gerenciar")
     def gerenciar_clientes():
-        return render_template('gerenciar_cliente.html')
-    
+        try:
+            clientes = models.listar_clientes()
+            return render_template('gerenciar_cliente.html', clientes=clientes)
+        except Exception as e:
+            return f"Erro ao buscar clientes: {str(e)}", 500
+
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():
         nome = request.form.get('nome')
