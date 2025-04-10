@@ -62,6 +62,7 @@ def deletar_cliente(id):
 #buscar pelo email
 
 #ordenar por :
+# id
 # nome 
 # idade
 # sexo
