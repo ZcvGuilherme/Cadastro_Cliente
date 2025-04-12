@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for ('static',filename='imagem/logoverde.png') }}" type="image/x-icon">
     <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Cadastrar Cliente</h1>
+        <h1>Cadastrar Produto</h1>
         <hr>
         
         <form action="{{ url_for('novo_produto') }}" method="POST">
 
             <div class="nome">
                 <label for="nome">Produto</label><br>
-                <input type="text" name="nome">
+                <input type="text" name="nome" id="nome">
             </div>
 
             <div class="quantidade">
@@ -25,7 +27,7 @@
 
             <div class="valor">
                 <label for="valor">Valor</label><br>
-                <input type="valor" name="valor" id="valor">
+                <input type="valor" name="valor">
             </div>
 
             <input type="submit" value="Adicionar">
