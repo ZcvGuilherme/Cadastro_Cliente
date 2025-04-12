@@ -7,9 +7,34 @@
     <title>Cadastrar Produto</title>
 </head>
 <body>
-    <p><small>Voltar à página inicial.</small></p>
-    <a href="index_navegação.html" rel="prev">
-    <img src="/app/static/imagem/setade voltar.png" alt="Setade voltar">
-    </a>
+    <div class="container">
+        <h1>Cadastrar Cliente</h1>
+        <hr>
+        
+        <form action="{{ url_for('novo_produto') }}" method="POST">
+
+            <div class="nome">
+                <label for="nome">Produto</label><br>
+                <input type="text" name="nome">
+            </div>
+
+            <div class="quantidade">
+                <label for="quantidade">Quantidade</label><br>
+                <input type="quantidade" name="quantidade" class="quantidade">
+            </div>
+
+            <div class="valor">
+                <label for="valor">Valor</label><br>
+                <input type="valor" name="valor" id="valor">
+            </div>
+
+            <input type="submit" value="Adicionar">
+
+            <p><small>Voltar à página inicial.</small></p>
+            <a href="index_navegação.html" rel="prev">
+            <img src="/app/static/imagem/setade voltar.png" alt="Setade voltar">
+            </a>
+        </form>
+    </div>
 </body>
 </html>
