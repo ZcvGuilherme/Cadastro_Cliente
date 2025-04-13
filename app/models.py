@@ -50,12 +50,12 @@ def listar_clientes():
     
 #deletar pessoa (busca por ID)
 def deletar_cliente(id):
-        conexao = conectar()
-        cursor = conexao.cursor()
-        
-        cursor.execute("DELETE FROM clientes WHERE id = ?",(id,))
-        cursor.close()
-        conexao.close()
+    conexao = conectar()
+    cursor = conexao.cursor()
+    cursor.execute("DELETE FROM clientes WHERE id = ?", (id,))
+    conexao.commit()
+    cursor.close()
+    conexao.close()
 #buscar por nome
 def buscar_nome(nome):
     conexao = conectar()

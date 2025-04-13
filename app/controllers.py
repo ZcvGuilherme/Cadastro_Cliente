@@ -15,6 +15,14 @@ def configurar_rotas(app):
     def cadastrar_produto():
         return render_template('cadastrar_produto.html')
     
+    @app.route("/deletar/<int:id>", methods=["POST"])
+    def deletar_cliente(id):
+        try:
+            models.deletar_cliente(id)
+            return redirect(url_for('gerenciar_clientes'))
+        except Exception as e:
+         return f"Erro ao deletar cliente: {str(e)}", 500
+    
     
     @app.route("/gerenciar-clientes")
     def gerenciar_clientes():
