@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
+    <title>Gerenciar Produto</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produto %}
+            <tr>
+                <td>{{ produto.id }}</td>
+                <td>{{ produto.nome }}</td>
+                <td>{{ cliente.quantidade }}</td>
+                <td>{{ cliente.valor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>
+        <p><small>Voltar à página inicial.</small></p>
+        <p>
+            <a href="{{ url_for('pagina_inicial') }}" rel="prev">
+                <img src="{{ url_for('static', filename='imagem/setade voltar.png') }}" alt="Setade voltar">
+            </a>
+        </p>
+    </h3>
+    
+</body>
+</html>

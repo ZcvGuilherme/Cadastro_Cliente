@@ -71,3 +71,10 @@ input.erro {
     border: 2px solid rgb(209, 113, 113);
     background-color: #ffe5e5;
 }
+
+.container01{
+    text-align: center; /* Centraliza o texto do h1 */
+    max-width: 400px; /* Ajuste conforme necessário */
+    background-color: rgb(176, 230, 212);
+    margin: 10px 10px 10px 50px;
+}

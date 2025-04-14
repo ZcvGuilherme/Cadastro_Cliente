@@ -7,13 +7,35 @@ def configurar_rotas(app):
     def pagina_inicial():
         return render_template('index_navegação.html')
     
-    @app.route("/cadastrar")
+    @app.route("/cadastrar-cliente")
     def cadastrar_cliente():
         return render_template('cadastrar_cliente.html')
     
-    @app.route("/gerenciar")
+    @app.route("/cadastrar-produto")
+    def cadastrar_produto():
+        return render_template('cadastrar_produto.html')
+    
+    @app.route("/deletar/<int:id>", methods=["POST"])
+    def deletar_cliente(id):
+        try:
+            models.deletar_cliente(id)
+            return redirect(url_for('gerenciar_clientes'))
+        except Exception as e:
+         return f"Erro ao deletar cliente: {str(e)}", 500
+    
+    
+    @app.route("/gerenciar-clientes")
     def gerenciar_clientes():
-        return render_template('gerenciar_cliente.html')
+        try:
+            clientes = models.listar_clientes()
+            return render_template('gerenciar_cliente.html', clientes=clientes)
+        except Exception as e:
+            return f"Erro ao buscar clientes: {str(e)}", 500
+
+    @app.route("/gerenciar-produtos")
+    def gerenciar_produtos():
+        return render_template('gerenciar_produto.html')
+    
     
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():

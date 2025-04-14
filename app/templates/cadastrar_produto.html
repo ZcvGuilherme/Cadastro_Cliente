@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for ('static',filename='imagem/logoverde.png') }}" type="image/x-icon">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Produto</h1>
+        <hr>
+        
+        <form action="{{ url_for('novo_produto') }}" method="POST">
+
+            <div class="nome">
+                <label for="nome">Produto</label><br>
+                <input type="text" name="nome">
+            </div>
+
+            <div class="quantidade">
+                <label for="quantidade">Quantidade</label><br>
+                <input type="quantidade" name="quantidade" class="quantidade">
+            </div>
+
+            <div class="valor">
+                <label for="valor">Valor</label><br>
+                <input type="valor" name="valor">
+            </div>
+
+            <input type="submit" value="Adicionar">
+
+            <h3>
+                <p><small>Voltar à página inicial.</small></p>
+                <p>
+                    <a href="{{ url_for('pagina_inicial') }}" rel="prev">
+                        <img src="{{ url_for('static', filename='imagem/setade voltar.png') }}" alt="Setade voltar">
+                    </a>
+                </p>
+            </h3>
+        </form>
+    </div>
+</body>
+</html>
