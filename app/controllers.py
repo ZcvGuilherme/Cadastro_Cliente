@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime, date
 from app import models
 
@@ -56,9 +56,34 @@ def configurar_rotas(app):
                 
             idade = calcular_idade(data_nasc)
             models.cadastrar_cliente_tabela(nome, idade, telefone, email, sexo)
+            flash(f"Cliente '{nome}' cadastrado com sucesso!", "sucesso")
             return redirect(url_for('cadastrar_cliente'))
         except Exception as e:
-            return f"Erro ao cadastrar cliente: {str(e)}", 500
+            flash(f"Erro ao cadastrar produto: {str(e)}", "erro")
+            return redirect(url_for('cadastrar_cliente'))
+
+
+
+    @app.route("/novo_produto", methods=['POST'])
+    def novo_produto():
+        nome = request.form.get("nome")
+        quantidade = request.form.get("quantidade")
+        valor = request.form.get("valor")
+        try:
+
+            quantidade = int(quantidade)
+            valor = float(valor)
+
+            models.cadastrar_produto(nome, valor, quantidade)
+            flash(f"Produto '{nome}' cadastrado com sucesso!", "sucesso")
+            return redirect(url_for('cadastrar_produto'))
+        except Exception as e:
+            flash(f"Erro ao cadastrar produto: {str(e)}", "erro")
+            return redirect(url_for('cadastrar_produto'))
+
+
+
+
 
 def calcular_idade(data_nasc):
     if isinstance(data_nasc, str):
