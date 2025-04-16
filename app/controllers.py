@@ -22,6 +22,17 @@ def configurar_rotas(app):
             return redirect(url_for('gerenciar_clientes'))
         except Exception as e:
          return f"Erro ao deletar cliente: {str(e)}", 500
+     
+    @app.route("/deletar-produto/<int:id>", methods=["POST"])
+    def deletar_produto(id):
+        try:
+            models.deletar_produto(id)
+            flash("Produto excluído com sucesso!", "sucesso")
+            return redirect(url_for('gerenciar_produtos'))
+        except Exception as e:
+            flash(f"Erro ao excluir produto: {str(e)}", "erro")
+            return redirect(url_for('gerenciar_produtos'))
+
     
     
     @app.route("/gerenciar-clientes")
@@ -34,7 +45,13 @@ def configurar_rotas(app):
 
     @app.route("/gerenciar-produtos")
     def gerenciar_produtos():
-        return render_template('gerenciar_produto.html')
+        try:
+            produtos = models.listar_produtos()
+            return render_template('gerenciar_produto.html', produtos=produtos)
+        except Exception as e:
+            return f"Erro ao buscar produtos: {str(e)}", 500
+
+
     
     
     @app.route("/novo_cliente", methods=['POST'])

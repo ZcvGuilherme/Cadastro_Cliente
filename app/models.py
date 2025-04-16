@@ -155,13 +155,23 @@ def cadastrar_produto(nome, valor, quantidade):
 
 
 def listar_produtos():
-    conexao = conectar_produtos()
+    conexao = conectar_produtos()  # Correção aqui
+    conexao.row_factory = sqlite3.Row 
     cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM produtos;")
+    cursor.execute("SELECT * FROM produtos")
     produtos = cursor.fetchall()
     cursor.close()
     conexao.close()
     return produtos
+
+def deletar_produto(id):
+    conexao = conectar_produtos()
+    cursor = conexao.cursor()
+    cursor.execute("DELETE FROM produtos WHERE id = ?", (id,))
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+
 
 
 def buscar_produto_por_nome(nome):
