@@ -1,20 +1,28 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime, date
-from app import models
+from app import models, views
 
 def configurar_rotas(app):
     @app.route("/")
     def pagina_inicial():
-        return render_template('index_navegação.html')
+        return views.pagina_inicial()
     
     @app.route("/cadastrar-cliente")
     def cadastrar_cliente():
-        return render_template('cadastrar_cliente.html')
+        return views.cadastrar_cliente()
     
     @app.route("/cadastrar-produto")
     def cadastrar_produto():
-        return render_template('cadastrar_produto.html')
+        return views.cadastrar_produto()
     
+    @app.route("/gerenciar-clientes")
+    def gerenciar_clientes():
+        return views.gerenciar_clientes()
+
+    @app.route("/gerenciar-produtos")
+    def gerenciar_produtos():
+        return views.gerenciar_produtos()
+
     @app.route("/deletar/<int:id>", methods=["POST"])
     def deletar_cliente(id):
         try:
@@ -32,25 +40,6 @@ def configurar_rotas(app):
         except Exception as e:
             flash(f"Erro ao excluir produto: {str(e)}", "erro")
             return redirect(url_for('gerenciar_produtos'))
-
-    
-    
-    @app.route("/gerenciar-clientes")
-    def gerenciar_clientes():
-        try:
-            clientes = models.listar_clientes()
-            return render_template('gerenciar_cliente.html', clientes=clientes)
-        except Exception as e:
-            return f"Erro ao buscar clientes: {str(e)}", 500
-
-    @app.route("/gerenciar-produtos")
-    def gerenciar_produtos():
-        try:
-            produtos = models.listar_produtos()
-            return render_template('gerenciar_produto.html', produtos=produtos)
-        except Exception as e:
-            return f"Erro ao buscar produtos: {str(e)}", 500
-
 
     
     
