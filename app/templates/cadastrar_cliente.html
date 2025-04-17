@@ -11,6 +11,18 @@
 </head>
 <body>
     <div class="container">
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                <div class="mensagens-flash">
+                    {% for categoria, mensagem in mensagens %}
+                        <div class="flash {{ categoria }}">{{ mensagem }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        
         <h1>Cadastrar Cliente</h1>
         <hr>
         
