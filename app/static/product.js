@@ -21,23 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (mensagensErro.length > 0) {
             e.preventDefault(); // Impede o envio do formulário
-
+        
             // Remove mensagens antigas
             const mensagensAntigas = document.querySelector(".mensagens-js");
             if (mensagensAntigas) mensagensAntigas.remove();
-
+        
             // Cria um bloco de mensagens no topo do formulário
             const divErros = document.createElement("div");
             divErros.classList.add("mensagens-js");
-
+        
             mensagensErro.forEach(msg => {
                 const p = document.createElement("p");
                 p.classList.add("flash", "erro");
                 p.textContent = msg;
                 divErros.appendChild(p);
             });
-
+        
             form.parentElement.insertBefore(divErros, form);
+        
+            // Remove automaticamente depois de 5 segundos
+            setTimeout(() => {
+                divErros.remove();
+            }, 5000);
         }
+        
     });
 });

@@ -50,11 +50,7 @@ def configurar_rotas(app):
         telefone = request.form.get('telefone')
         email = request.form.get('email')
         sexo = request.form.get('sexo')
-        
-        if not nome or not data_nasc or not sexo:
-            flash("Preencha todos os campos!", "erro")
-            return redirect(url_for("cadastrar_cliente"))
-        
+
         try:
             if sexo == "Masculino":
                 sexo = 'M'
