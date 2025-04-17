@@ -10,13 +10,25 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Idade</th>
+                    <th>
+                        <a href="{{ url_for('gerenciar_clientes', campo='id', ordem='desc' if campo == 'id' and ordem == 'asc' else 'asc') }}">
+                            ID
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('gerenciar_clientes', campo='nome', ordem='desc' if campo == 'nome' and ordem == 'asc' else 'asc') }}">
+                            Nome
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('gerenciar_clientes', campo='idade', ordem='desc' if campo == 'idade' and ordem == 'asc' else 'asc') }}">
+                            Idade
+                        </a>
+                    </th>
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Sexo</th>
-                    <th>Ações</th> 
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>

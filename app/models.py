@@ -90,18 +90,16 @@ def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
     Busca clientes no banco de dados filtrando por nome ou e-mail e ordena os resultados.
 
     Parâmetros:
-        campo (str): Campo pelo qual os resultados serão ordenados. 
-                     Valores válidos: 'id', 'nome', 'idade', 'sexo', 'email'. 
-                     Padrão é 'id'. Se for inválido, será substituído por 'id'.
+        campo (str): Campo pelo qual os resultados serão ordenados.
+                     Valores válidos: 'id', 'nome', 'idade', 'sexo', 'email'.
         busca (str): Texto usado para filtrar os resultados nos campos 'nome' ou 'email'.
-                     A busca é feita usando o operador LIKE com wildcards.
-        ordem (bool): Define a ordem da listagem. 
-                      True para ordem crescente (ASC), False para decrescente (DESC).
+        ordem (bool): True para ordem crescente (ASC), False para decrescente (DESC).
 
     Retorna:
-        list: Lista de tuplas contendo os registros dos clientes encontrados.
+        list: Lista de objetos tipo Row (acessível com cliente.id, cliente.nome, etc.)
     """
     conexao = conectar()
+    conexao.row_factory = sqlite3.Row 
     cursor = conexao.cursor()
     direcao = 'ASC' if ordem else 'DESC'
     
@@ -120,6 +118,7 @@ def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
     cursor.close()
     conexao.close()
     return clientes
+
 
 ######################################################################################
 
@@ -141,6 +140,22 @@ def criar_tabela_produtos():
     cursor.close()
     conexao.close()
 
+def buscar_produtos_ordenado(campo='id', ordem=True):
+    conexao = conectar_produtos()
+    conexao.row_factory = sqlite3.Row
+    cursor = conexao.cursor()
+    direcao = 'ASC' if ordem else 'DESC'
+
+    campos_validos = ['id', 'valor', 'quantidade']
+    if campo not in campos_validos:
+        campo = 'id'
+
+    query = f"SELECT * FROM produtos ORDER BY {campo} {direcao};"
+    cursor.execute(query)
+    produtos = cursor.fetchall()
+    cursor.close()
+    conexao.close()
+    return produtos
 
 def cadastrar_produto(nome, valor, quantidade):
     conexao = conectar_produtos()
@@ -155,7 +170,7 @@ def cadastrar_produto(nome, valor, quantidade):
 
 
 def listar_produtos():
-    conexao = conectar_produtos()  # Correção aqui
+    conexao = conectar_produtos() 
     conexao.row_factory = sqlite3.Row 
     cursor = conexao.cursor()
     cursor.execute("SELECT * FROM produtos")
