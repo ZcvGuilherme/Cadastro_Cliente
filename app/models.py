@@ -187,18 +187,6 @@ def deletar_produto(id):
     cursor.close()
     conexao.close()
 
-
-
-def buscar_produto_por_nome(nome):
-    conexao = conectar_produtos()
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM produtos WHERE nome LIKE ?;", ('%' + nome + '%',))
-    produtos = cursor.fetchall()
-    cursor.close()
-    conexao.close()
-    return produtos
-
-
 def atualizar_produto(id, nome=None, valor=None, quantidade=None):
     conexao = conectar_produtos()
     cursor = conexao.cursor()
