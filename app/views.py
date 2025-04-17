@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from app import models
 
 def pagina_inicial():
@@ -12,14 +12,21 @@ def cadastrar_produto():
 
 def gerenciar_clientes():
     try:
-        clientes = models.listar_clientes()
-        return render_template('gerenciar_cliente.html', clientes=clientes)
+        campo = request.args.get("campo", "id")
+        ordem = request.args.get("ordem", "asc")
+
+        ordem_bool = True if ordem == "asc" else False
+        clientes = models.buscar_clientes_ordenado(campo=campo, ordem=ordem_bool)
+
+        return render_template('gerenciar_cliente.html', clientes=clientes, campo=campo, ordem=ordem)
     except Exception as e:
         return f"Erro ao buscar clientes: {str(e)}", 500
 
 def gerenciar_produtos():
     try:
-        produtos = models.listar_produtos()
-        return render_template('gerenciar_produto.html', produtos=produtos)
+        campo = request.args.get("campo", "id")
+        ordem = request.args.get("ordem", "asc") == "asc"
+        produtos = models.buscar_produtos_ordenado(campo, ordem)
+        return render_template("gerenciar_produto.html", produtos=produtos, campo=campo, ordem=ordem)
     except Exception as e:
         return f"Erro ao buscar produtos: {str(e)}", 500

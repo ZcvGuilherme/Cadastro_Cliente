@@ -17,26 +17,11 @@ def configurar_rotas(app):
     
     @app.route("/gerenciar-clientes")
     def gerenciar_clientes():
-        try:
-           campo = request.args.get("campo", "id")
-           ordem = request.args.get("ordem", "asc")
-
-           ordem_bool = True if ordem == "asc" else False
-           clientes = models.buscar_clientes_ordenado(campo=campo, ordem=ordem_bool)
-
-           return render_template('gerenciar_cliente.html', clientes=clientes, campo=campo, ordem=ordem)
-        except Exception as e:
-           return f"Erro ao buscar clientes: {str(e)}", 500
+        return views.gerenciar_clientes()
 
     @app.route("/gerenciar-produtos")
     def gerenciar_produtos():
-        try:
-           campo = request.args.get("campo", "id")
-           ordem = request.args.get("ordem", "asc") == "asc"
-           produtos = models.buscar_produtos_ordenado(campo, ordem)
-           return render_template("gerenciar_produto.html", produtos=produtos, campo=campo, ordem=ordem)
-        except Exception as e:
-           return f"Erro ao buscar produtos: {str(e)}", 500
+        return views.gerenciar_produtos()
 
     @app.route("/deletar/<int:id>", methods=["POST"])
     def deletar_cliente(id):
