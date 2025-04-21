@@ -14,9 +14,6 @@ body {
     width: 100%;
     max-width: 400px; /* Ajuste conforme necessário */
     background-color: rgb(176, 230, 212);
-    margin-left: auto; /*margens das laterais */
-    margin-right: auto;
-
 }
 
 .container01{
@@ -62,8 +59,8 @@ input[type="submit"] {
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 50px; /*margens das laterais */
-    margin-right: 10px;
+    margin-left: auto; /*margens das laterais */
+    margin-right: auto;
 }
 
 input[type="submit"]:hover {
