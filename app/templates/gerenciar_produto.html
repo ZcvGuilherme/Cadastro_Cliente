@@ -5,59 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
     <title>Gerenciar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{url_for('static', filename='product.js') }}"></script>
 </head>
 <body>
-    <h1>Lista de Produtos</h1>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>
-                    <a href="{{ url_for('gerenciar_produtos', campo='id', ordem='desc' if campo == 'id' and ordem else 'asc') }}">
-                        ID
-                    </a>
-                </th>
-                <th>Nome</th>
-                <th>
-                    <a href="{{ url_for('gerenciar_produtos', campo='quantidade', ordem='desc' if campo == 'quantidade' and ordem else 'asc') }}">
-                        Quantidade
-                    </a>
-                </th>
-                <th>
-                    <a href="{{ url_for('gerenciar_produtos', campo='valor', ordem='desc' if campo == 'valor' and ordem else 'asc') }}">
-                        Valor
-                    </a>
-                </th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+    <div class="container01">
+        <h1>Lista de Produtos</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th class="th">
+                        <a href="{{ url_for('gerenciar_produtos', campo='id', ordem='desc' if campo == 'id' and ordem else 'asc') }}">
+                            ID
+                        </a>
+                    </th>
+                    <th>Nome</th>
+                    <th>
+                        <a href="{{ url_for('gerenciar_produtos', campo='quantidade', ordem='desc' if campo == 'quantidade' and ordem else 'asc') }}">
+                            Quantidade
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('gerenciar_produtos', campo='valor', ordem='desc' if campo == 'valor' and ordem else 'asc') }}">
+                            Valor
+                        </a>
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
         
-        <tbody>
-            {% for produto in produtos %}
-            <tr>
-                <td>{{ produto.id }}</td>
-                <td>{{ produto.nome }}</td>
-                <td>{{ produto.quantidade }}</td>
-                <td>R$ {{ "%.2f"|format(produto.valor)|replace(".", ",") }}</td>
-                <td>
-                    
-                    <form action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST">
-                        <button type="submit">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h3>
-        <p><small>Voltar à página inicial.</small></p>
-        <p>
-            <a href="{{ url_for('pagina_inicial') }}" rel="prev">
-                <img src="{{ url_for('static', filename='imagem/setade voltar.png') }}" alt="Setade voltar">
-            </a>
-        </p>
-    </h3>
-    
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>R$ {{ "%.2f"|format(produto.valor)|replace(".", ",") }}</td>
+                    <td>
+        
+                        <form action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3>
+            <p><small>Voltar à página inicial.</small></p>
+            <p>
+                <a href="{{ url_for('pagina_inicial') }}" rel="prev">
+                    <img src="{{ url_for('static', filename='imagem/setade voltar.png') }}" alt="Setade voltar">
+                </a>
+            </p>
+        </h3>
+        
+    </div>
 </body>
 </html>
