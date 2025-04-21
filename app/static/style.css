@@ -14,6 +14,8 @@ body {
     width: 100%;
     max-width: 400px; /* Ajuste conforme necessário */
     background-color: rgb(176, 230, 212);
+    margin-left: auto; /*margens das laterais */
+    margin-right: auto;
 
 }
 
