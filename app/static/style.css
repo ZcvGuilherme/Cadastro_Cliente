@@ -36,6 +36,9 @@ body {
 table{
     margin-left: auto; /*margens das laterais */
     margin-right: auto;
+    border: 2px solid #000000;
+    table-layout: auto;
+    background-color: #b1e4c6;
 }
 form {
     display: flex;
