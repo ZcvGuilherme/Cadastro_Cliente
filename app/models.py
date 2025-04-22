@@ -84,9 +84,9 @@ def buscar_por_email(email):
     cursor.close()
     conexao.close()
     return clientes
-
+busca=''
 def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
-    """
+    """busca=''
     Busca clientes no banco de dados filtrando por nome ou e-mail e ordena os resultados.
 
     Parâmetros:
