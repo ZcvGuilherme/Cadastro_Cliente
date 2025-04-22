@@ -2,7 +2,6 @@ import pyautogui as pg
 import pandas as pd
 import time
 
-
 def go_and_click(x, y):
     pg.moveTo(x, y)
     pg.click()
@@ -60,7 +59,7 @@ def cadastrar_clientes():
             go_and_click(707, 573)
 
         go_and_click(585, 558)
-        time.sleep(0.5)  
+        time.sleep(1)  
 
 time.sleep(3)
 cadastrar_produtos()
