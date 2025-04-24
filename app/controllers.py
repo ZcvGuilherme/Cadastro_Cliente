@@ -30,7 +30,8 @@ def configurar_rotas(app):
             return redirect(url_for('gerenciar_clientes'))
         except Exception as e:
          return f"Erro ao deletar cliente: {str(e)}", 500
-     
+
+
     @app.route("/deletar-produto/<int:id>", methods=["POST"])
     def deletar_produto(id):
         try:

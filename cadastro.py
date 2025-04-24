@@ -2,6 +2,7 @@ import pyautogui as pg
 import pandas as pd
 import time
 
+
 def go_and_click(x, y):
     pg.moveTo(x, y)
     pg.click()
