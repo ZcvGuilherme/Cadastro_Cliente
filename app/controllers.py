@@ -36,7 +36,6 @@ def configurar_rotas(app):
     def deletar_produto(id):
         try:
             models.deletar_produto(id)
-            flash("Produto excluído com sucesso!", "sucesso")
             return redirect(url_for('gerenciar_produtos'))
         except Exception as e:
             flash(f"Erro ao excluir produto: {str(e)}", "erro")
@@ -84,9 +83,6 @@ def configurar_rotas(app):
         except Exception as e:
             flash(f"Erro ao cadastrar produto: {str(e)}", "erro")
             return redirect(url_for('cadastrar_produto'))
-
-
-
 
 
 def calcular_idade(data_nasc):
