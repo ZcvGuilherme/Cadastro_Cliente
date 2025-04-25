@@ -119,8 +119,41 @@ def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
     conexao.close()
     return clientes
 
-def editar_cliente(id):
-    pass
+def editar_cliente(id, nome=None, idade=None, telefone=None, email=None, sexo=None):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    campos = []
+    valores = []
+
+    if nome:
+        campos.append("nome = ?")
+        valores.append(nome)
+
+    if idade:
+        campos.append("idade = ?")
+        valores.append(idade)
+    
+    if telefone:
+        campos.append("telefone = ?")
+        valores.append(telefone)
+
+    if email:
+        campos.append("email = ?")
+        valores.append(email)
+    
+    if sexo:
+        campos.append("sexo = ?")
+        valores.append(email)
+    
+    valores.append(id)
+
+    sql = f"UPDATE clientes SET {', '.join(campos)} WHERE id = ?"
+    cursor.execute(sql, valores)
+
+    conexao.commit()
+    cursor.close()
+    conexao.close()
 
 ######################################################################################
 
