@@ -119,6 +119,8 @@ def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
     conexao.close()
     return clientes
 
+def editar_cliente(id):
+    pass
 
 ######################################################################################
 

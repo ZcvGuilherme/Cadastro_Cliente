@@ -30,7 +30,8 @@ def configurar_rotas(app):
             return redirect(url_for('gerenciar_clientes'))
         except Exception as e:
          return f"Erro ao deletar cliente: {str(e)}", 500
-     
+
+
     @app.route("/deletar-produto/<int:id>", methods=["POST"])
     def deletar_produto(id):
         try:
@@ -40,8 +41,14 @@ def configurar_rotas(app):
             flash(f"Erro ao excluir produto: {str(e)}", "erro")
             return redirect(url_for('gerenciar_produtos'))
 
-    
-    
+    @app.route("/editar-cliente/<int:id>", methods=["POST"])
+    def editar_cliente(id):
+        try:
+            models.editar_cliente(id)
+            return redirect(url_for('gerenciar_clientes'))
+        except Exception as e:
+            return redirect(url_for('gerenciar_clientes'))
+        
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():
         nome = request.form.get('nome')
