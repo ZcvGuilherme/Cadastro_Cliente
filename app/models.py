@@ -140,7 +140,7 @@ def criar_tabela_produtos():
     cursor.close()
     conexao.close()
 
-def buscar_produtos_ordenado(campo='id', ordem=True):
+def buscar_produtos_ordenado(campo='id',busca = '', ordem=True):
     conexao = conectar_produtos()
     conexao.row_factory = sqlite3.Row
     cursor = conexao.cursor()
