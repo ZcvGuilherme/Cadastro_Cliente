@@ -57,10 +57,11 @@ form {
     font-size: 1em;
 }
 
-form01{
+.form01 {
     background-color: rgb(98, 179, 225);
     font-family: 'Times New Roman', Times, serif;
 }
+
 input[type="submit"] {
     cursor: pointer;
     background-color:rgb(98, 179, 225);
