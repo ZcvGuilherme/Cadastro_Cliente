@@ -55,6 +55,7 @@ form {
     margin-top: 20px; /* Espaço entre o h1 e o formulário */
     font-family: 'Times New Roman', Times, serif;
     font-size: 1em;
+    background-color:rgb(98, 179, 225);
 }
 input[type="submit"] {
     cursor: pointer;

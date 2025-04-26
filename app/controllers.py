@@ -48,7 +48,16 @@ def configurar_rotas(app):
             return redirect(url_for('gerenciar_clientes'))
         except Exception as e:
             return redirect(url_for('gerenciar_clientes'))
-        
+    
+    @app.route("/editar-produto/<int:id", methods=["POST"]) 
+    def editar_produto(id):
+        try:
+            models.idetar_produto(id)
+            return redirect(url_for('gerenciar_produtos'))
+        except Exception as e:
+            return redirect('gerenciar_produtos')
+      
+    
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():
         nome = request.form.get('nome')
