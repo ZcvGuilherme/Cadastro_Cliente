@@ -269,7 +269,7 @@ def editar_produto(id, nome=None, valor=None, quantidade=None):
     
     valores.append(id)
 
-    sql = f"UPDATE clientes SET {', '.join(campos)} WHERE id = ?"
+    sql = f"UPDATE produtos SET {', '.join(campos)} WHERE id = ?"
     cursor.execute(sql, valores)
 
     conexao.commit()
