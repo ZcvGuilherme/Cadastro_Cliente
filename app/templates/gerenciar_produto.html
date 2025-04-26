@@ -14,22 +14,22 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th class="th">
+                    <th>
                         <a href="{{ url_for('gerenciar_produtos', campo='id', ordem='desc' if campo == 'id' and ordem else 'asc') }}">
                             ID
                         </a>
                     </th>
-                    <th class="th">
+                    <th>
                         <a href="{{ url_for('gerenciar_produtos', campo='nome', ordem='desc' if campo == 'nome' and ordem else 'asc') }}">
                             Nome
                         </a>
                     </th>
-                    <th class="th">
+                    <th>
                         <a href="{{ url_for('gerenciar_produtos', campo='quantidade', ordem='desc' if campo == 'quantidade' and ordem else 'asc') }}">
                             Quantidade
                         </a>
                     </th>
-                    <th class="th">
+                    <th >
                         <a href="{{ url_for('gerenciar_produtos', campo='valor', ordem='desc' if campo == 'valor' and ordem else 'asc') }}">
                             Valor
                         </a>
