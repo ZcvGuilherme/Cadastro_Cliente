@@ -181,7 +181,7 @@ def buscar_produtos_ordenado(campo='id',busca = '', ordem=True):
     cursor = conexao.cursor()
     direcao = 'ASC' if ordem else 'DESC'
 
-    campos_validos = ['id', 'valor', 'quantidade']
+    campos_validos = ['id', 'nome', 'valor', 'quantidade']
     if campo not in campos_validos:
         campo = 'id'
 

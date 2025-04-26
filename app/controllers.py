@@ -49,7 +49,7 @@ def configurar_rotas(app):
         except Exception as e:
             return redirect(url_for('gerenciar_clientes'))
     
-    @app.route("/editar-produto/<int:id", methods=["POST"]) 
+    @app.route("/editar-produto/<int:id>", methods=["POST"]) 
     def editar_produto(id):
         try:
             models.idetar_produto(id)
