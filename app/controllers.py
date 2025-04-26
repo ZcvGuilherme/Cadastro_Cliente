@@ -55,7 +55,7 @@ def configurar_rotas(app):
             models.idetar_produto(id)
             return redirect(url_for('gerenciar_produtos'))
         except Exception as e:
-            return redirect('gerenciar_produtos')
+            return redirect(url_for('gerenciar_produtos'))
       
     
     @app.route("/novo_cliente", methods=['POST'])
