@@ -43,10 +43,10 @@
                     <td>R$ {{ "%.2f"|format(produto.valor)|replace(".", ",") }}</td>
                     <td>
         
-                        <form action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST">
+                        <form class="form01" action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST">
                             <button type="submit">Excluir</button>
                         </form>
-                        <form action="{{ url_for('editar_produto', id=produto.id) }}" method="post" onsubmit="return confirm ('Tem certeza que deseja editar produto');">
+                        <form class="form01" action="{{ url_for('editar_produto', id=produto.id) }}" method="post" onsubmit="return confirm ('Tem certeza que deseja editar produto');">
                             <button type="submit">Editar</button>
                         </form>
                     </td>
