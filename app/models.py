@@ -246,3 +246,32 @@ def atualizar_produto(id, nome=None, valor=None, quantidade=None):
     conexao.commit()
     cursor.close()
     conexao.close()
+    
+    
+def editar_produto(id, nome=None, valor=None, quantidade=None):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    campos = []
+    valores = []
+
+    if nome:
+        campos.append("nome = ?")
+        valores.append(nome)
+     
+    if valor:
+        campos.append("valor = ?")
+        valores.append(valor)
+    
+    if quantidade:
+        campos.append("quantidade = ?")
+        valores.append(quantidade)
+    
+    valores.append(id)
+
+    sql = f"UPDATE clientes SET {', '.join(campos)} WHERE id = ?"
+    cursor.execute(sql, valores)
+
+    conexao.commit()
+    cursor.close()
+    conexao.close()
