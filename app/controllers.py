@@ -43,11 +43,15 @@ def configurar_rotas(app):
 
     @app.route("/editar-cliente/<int:id>", methods=["POST"])
     def editar_cliente(id):
+        
         try:
+            
             models.editar_cliente(id)
             return redirect(url_for('gerenciar_clientes'))
         except Exception as e:
-            return redirect(url_for('gerenciar_clientes'))
+            registro = buscar_registro_por_id(id)  # Função que pega o registro no banco
+        return render_template('editar.html', registro=registro)
+        return redirect(url_for('gerenciar_clientes'))
     
     @app.route("/editar-produto/<int:id>", methods=["POST"]) 
     def editar_produto(id):

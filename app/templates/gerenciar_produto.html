@@ -50,7 +50,7 @@
                             <button type="submit">Excluir</button>
                         </form>
                         <form class="form01" action="{{ url_for('editar_produto', id=produto.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja editar o produto?');">
-                            <button type="submit">Editar</button>
+                            <button type="submit"><a href="{{ url_for('editar_produto', id=produto.id) }}">Editar</a></button>
                         </form>
                     </td>
                 </tr>

@@ -49,7 +49,7 @@
                             <button type="submit">Excluir</button>
                         </form>
                         <form class="form01" action="{{ url_for('editar_cliente', id=cliente.id) }}" method="post" onsubmit="return confirm ('Tem certeza que deseja editar cliente');">
-                            <button type="submit">Editar</button>
+                            <button type="submit"><a href="{{ url_for('editar_cliente', id=cliente.id) }}">Editar</a></button>
                         </form>
                     </td>
                 </tr>
