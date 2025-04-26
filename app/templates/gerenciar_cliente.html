@@ -48,7 +48,7 @@
                         <form action="{{ url_for('deletar_cliente', id=cliente.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
                             <button type="submit">Excluir</button>
                         </form>
-                        <form action="{{ url_for('editar', id=cliente.id) }}" method="post" onsubmit="return confirm ('Tem certeza que deseja editar cliente');">
+                        <form action="{{ url_for('editar_cliente', id=cliente.id) }}" method="post" onsubmit="return confirm ('Tem certeza que deseja editar cliente');">
                             <button type="submit">Editar</button>
                         </form>
                     </td>
