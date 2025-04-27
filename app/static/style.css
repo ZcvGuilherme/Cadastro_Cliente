@@ -152,3 +152,36 @@ input.erro {
         width: 100%;
     }
 }
+
+.search-bar {
+
+    display: contents;          /* Coloca o input e botão lado a lado */
+    align-items: center;    /* Alinha verticalmente */
+    gap: 8px;               /* Espaço entre o input e o botão */
+}
+
+.search-bar input[type="text"] {
+    padding: 6px 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.search-bar button {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+table {
+    margin-top: 10px;
+}

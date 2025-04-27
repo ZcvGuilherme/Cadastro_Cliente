@@ -13,12 +13,12 @@ def cadastrar_produto():
 def gerenciar_clientes():
     try:
         campo = request.args.get("campo", "id")
-        ordem = request.args.get("ordem", "asc")
+        ordem = request.args.get("ordem", "asc") == "asc"
+        busca = request.args.get("pesquisa", "")
 
-        ordem_bool = True if ordem == "asc" else False
-        clientes = models.buscar_clientes_ordenado(campo=campo, ordem=ordem_bool)
 
-        return render_template('gerenciar_cliente.html', clientes=clientes, campo=campo, ordem=ordem)
+        clientes = models.buscar_clientes_ordenado(campo=campo,busca=busca, ordem=ordem)
+        return render_template('gerenciar_cliente.html', clientes=clientes, campo=campo, ordem=ordem, busca=busca)
     except Exception as e:
         return f"Erro ao buscar clientes: {str(e)}", 500
 
@@ -26,7 +26,10 @@ def gerenciar_produtos():
     try:
         campo = request.args.get("campo", "id")
         ordem = request.args.get("ordem", "asc") == "asc"
-        produtos = models.buscar_produtos_ordenado(campo, ordem)
-        return render_template("gerenciar_produto.html", produtos=produtos, campo=campo, ordem=ordem)
+        busca = request.args.get("pesquisa", "")
+
+
+        produtos = models.buscar_produtos_ordenado(campo, busca, ordem)
+        return render_template("gerenciar_produto.html", produtos=produtos, campo=campo, ordem=ordem, busca =busca)
     except Exception as e:
         return f"Erro ao buscar produtos: {str(e)}", 500

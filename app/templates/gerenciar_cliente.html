@@ -11,21 +11,27 @@
 <body>
     <div class="container01">
         <h1 class="h101">Lista de Clientes</h1>
+
+        <form action="{{ url_for('gerenciar_clientes')}}" method="GET" class="search-bar">
+            <input type="text" name="pesquisa" placeholder="Pesquisar por ID, nome ou email" value="{{ request.args.get('pesquisa', '') }}">
+            <button type="submit">Pesquisar</button>
+        </form>
+
         <table border="1">
             <thead>
                 <tr>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='id', ordem='desc' if campo == 'id' and ordem == 'asc' else 'asc') }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='id', ordem='desc' if campo == 'id' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
                             ID
                         </a>
                     </th>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='nome', ordem='desc' if campo == 'nome' and ordem == 'asc' else 'asc') }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='nome', ordem='desc' if campo == 'nome' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
                             Nome
                         </a>
                     </th>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='idade', ordem='desc' if campo == 'idade' and ordem == 'asc' else 'asc') }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='idade', ordem='desc' if campo == 'idade' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
                             Idade
                         </a>
                     </th>

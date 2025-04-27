@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime, date
 from app import models, views
-
+#---------------------------------------ROTAS PAGINAS----------------------------------#
 def configurar_rotas(app):
     @app.route("/")
     def pagina_inicial():
@@ -22,42 +22,13 @@ def configurar_rotas(app):
     @app.route("/gerenciar-produtos")
     def gerenciar_produtos():
         return views.gerenciar_produtos()
-
-    @app.route("/deletar/<int:id>", methods=["POST"])
-    def deletar_cliente(id):
-        try:
-            models.deletar_cliente(id)
-            return redirect(url_for('gerenciar_clientes'))
-        except Exception as e:
-         return f"Erro ao deletar cliente: {str(e)}", 500
+#---------------------------------------ROTAS PAGINAS----------------------------------#
 
 
-    @app.route("/deletar-produto/<int:id>", methods=["POST"])
-    def deletar_produto(id):
-        try:
-            models.deletar_produto(id)
-            return redirect(url_for('gerenciar_produtos'))
-        except Exception as e:
-            flash(f"Erro ao excluir produto: {str(e)}", "erro")
-            return redirect(url_for('gerenciar_produtos'))
 
-    @app.route("/editar-cliente/<int:id>", methods=["POST"])
-    def editar_cliente(id):
-        try:
-            models.editar_cliente(id)
-            return redirect(url_for('gerenciar_clientes'))
-        except Exception as e:
-            return redirect(url_for('gerenciar_clientes'))
-    
-    @app.route("/editar-produto/<int:id>", methods=["POST"]) 
-    def editar_produto(id):
-        try:
-            models.idetar_produto(id)
-            return redirect(url_for('gerenciar_produtos'))
-        except Exception as e:
-            return redirect(url_for('gerenciar_produtos'))
-      
-    
+
+
+#---------------------------------------ROTAS CLIENTES----------------------------------#
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():
         nome = request.form.get('nome')
@@ -80,7 +51,58 @@ def configurar_rotas(app):
             flash(f"Erro ao cadastrar produto: {str(e)}", "erro")
             return redirect(url_for('cadastrar_cliente'))
 
+    def calcular_idade(data_nasc):
+        if isinstance(data_nasc, str):
+            data_nasc = datetime.strptime(data_nasc, "%Y-%m-%d").date()
+        
+        hoje = date.today()
+        idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month, data_nasc.day))
+        return idade
+    
 
+    @app.route("/editar-cliente/<int:id>", methods=["POST"])
+    def editar_cliente(id):
+        try:
+            models.editar_cliente(id)
+            return redirect(url_for('gerenciar_clientes'))
+        except Exception as e:
+            return redirect(url_for('gerenciar_clientes'))
+    
+
+    @app.route("/deletar/<int:id>", methods=["POST"])
+    def deletar_cliente(id):
+        try:
+            models.deletar_cliente(id)
+            return redirect(url_for('gerenciar_clientes'))
+        except Exception as e:
+         return f"Erro ao deletar cliente: {str(e)}", 500
+
+#---------------------------------------ROTAS CLIENTES----------------------------------#
+
+
+
+
+
+
+#---------------------------------------ROTAS PRODUTOS----------------------------------#
+    @app.route("/deletar-produto/<int:id>", methods=["POST"])
+    def deletar_produto(id):
+        try:
+            models.deletar_produto(id)
+            return redirect(url_for('gerenciar_produtos'))
+        except Exception as e:
+            flash(f"Erro ao excluir produto: {str(e)}", "erro")
+            return redirect(url_for('gerenciar_produtos'))
+
+
+    @app.route("/editar-produto/<int:id>", methods=["POST"]) 
+    def editar_produto(id):
+        try:
+            models.editar_produto(id)
+            return redirect(url_for('gerenciar_produtos'))
+        except Exception as e:
+            return redirect(url_for('gerenciar_produtos'))
+      
 
     @app.route("/novo_produto", methods=['POST'])
     def novo_produto():
@@ -100,10 +122,4 @@ def configurar_rotas(app):
             return redirect(url_for('cadastrar_produto'))
 
 
-def calcular_idade(data_nasc):
-    if isinstance(data_nasc, str):
-        data_nasc = datetime.strptime(data_nasc, "%Y-%m-%d").date()
-    
-    hoje = date.today()
-    idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month, data_nasc.day))
-    return idade
+#---------------------------------------ROTAS PRODUTOS----------------------------------#

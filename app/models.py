@@ -109,11 +109,11 @@ def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
 
     query = f"""
         SELECT * FROM clientes 
-        WHERE nome LIKE ? OR email LIKE ? 
+        WHERE id LIKE ? OR nome LIKE ? OR email LIKE ? 
         ORDER BY {campo} {direcao}
     """
     
-    cursor.execute(query, (f'%{busca}%', f'%{busca}%'))
+    cursor.execute(query, (f'%{busca}%', f'%{busca}%', f'%{busca}%'))
     clientes = cursor.fetchall()
     cursor.close()
     conexao.close()
@@ -175,7 +175,7 @@ def criar_tabela_produtos():
     cursor.close()
     conexao.close()
 
-def buscar_produtos_ordenado(campo='id',busca = '', ordem=True):
+def buscar_produtos_ordenado(campo='id', busca='', ordem=True):
     conexao = conectar_produtos()
     conexao.row_factory = sqlite3.Row
     cursor = conexao.cursor()
@@ -185,12 +185,18 @@ def buscar_produtos_ordenado(campo='id',busca = '', ordem=True):
     if campo not in campos_validos:
         campo = 'id'
 
-    query = f"SELECT * FROM produtos ORDER BY {campo} {direcao};"
-    cursor.execute(query)
+    # Adicionando os parâmetros de busca de forma segura nas colunas corretas
+    query = f"SELECT * FROM produtos WHERE nome LIKE ? OR quantidade LIKE ? OR id LIKE ? ORDER BY {campo} {direcao};"
+    busca_param = f"%{busca}%"  # Adiciona os `%` para busca parcial
+    cursor.execute(query, (busca_param, busca_param, busca_param))  # Passando os parâmetros de forma segura
     produtos = cursor.fetchall()
+    
     cursor.close()
     conexao.close()
+
     return produtos
+
+
 
 def cadastrar_produto(nome, valor, quantidade):
     conexao = conectar_produtos()
@@ -221,32 +227,6 @@ def deletar_produto(id):
     conexao.commit()
     cursor.close()
     conexao.close()
-
-def atualizar_produto(id, nome=None, valor=None, quantidade=None):
-    conexao = conectar_produtos()
-    cursor = conexao.cursor()
-
-    campos = []
-    valores = []
-
-    if nome:
-        campos.append("nome = ?")
-        valores.append(nome)
-    if valor is not None:
-        campos.append("valor = ?")
-        valores.append(valor)
-    if quantidade is not None:
-        campos.append("quantidade = ?")
-        valores.append(quantidade)
-    valores.append(id)
-
-    sql = f"UPDATE produtos SET {', '.join(campos)} WHERE id = ?"
-    cursor.execute(sql, valores)
-
-    conexao.commit()
-    cursor.close()
-    conexao.close()
-    
     
 def editar_produto(id, nome=None, valor=None, quantidade=None):
     conexao = conectar()
