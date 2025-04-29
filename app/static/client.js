@@ -97,6 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
 function editarLinha(botao) {
     const linha = botao.closest('tr');
     const colunas = linha.querySelectorAll('td');
@@ -113,8 +115,8 @@ function editarLinha(botao) {
 
     // Botões de Confirmar e Cancelar
     colunas[6].innerHTML = `
-        <button onclick="confirmarEdicao(this, ${valoresOriginais[0]})">Confirmar</button>
-        <button onclick="cancelarEdicao(this, ${JSON.stringify(valoresOriginais).replace(/"/g, '&quot;')})">Cancelar</button>
+        <button class="botao-confirmar" onclick="confirmarEdicao(this, ${valoresOriginais[0]})">Confirmar</button>
+        <button class="botao-cancelar" onclick="cancelarEdicao(this, ${JSON.stringify(valoresOriginais).replace(/"/g, '&quot;')})">Cancelar</button>
     `;
 }
 
