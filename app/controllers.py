@@ -72,9 +72,9 @@ def configurar_rotas(app):
                 sexo = data.get('sexo')
 
                 models.editar_cliente(id, nome=nome, idade=idade, telefone=telefone, email=email, sexo=sexo)
-                return '', 204  # sucesso sem conteúdo
+                return '', 204 
             else:
-                
+
                 return redirect(url_for("gerenciar_clientes"))
         except Exception as e:
            
