@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagem/logoverde.png') }}" type="image/x-icon">
     <title>Gerenciar Clientes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{url_for('static', filename='product.js') }}"></script>
+    <script src="{{url_for('static', filename='client.js') }}"></script>
 </head>
 <body>
     <div class="container01">
@@ -54,12 +54,12 @@
                         <form class="form01" action="{{ url_for('deletar_cliente', id=cliente.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
                             <button type="submit">Excluir</button>
                         </form>
-                        <form class="form01" action="{{ url_for('editar_cliente', id=cliente.id) }}" method="post">
-                            <button type="submit">Editar</button>
+                        <form class="form01" onsubmit="return false;">
+                            <button type="button" onclick="editarLinha(this)">Editar</button>
                         </form>
                     </td>
                 </tr>
-                {% endfor %}
+                {% endfor %}    
             </tbody>
         </table>
 

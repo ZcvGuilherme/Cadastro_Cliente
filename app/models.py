@@ -9,6 +9,7 @@ def criar_tabela_clientes():
     conexao = conectar()
     cursor = conexao.cursor()
     
+
     cursor.execute("""
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -19,6 +20,8 @@ def criar_tabela_clientes():
                 sexo TEXT CHECK (sexo IN ('M', 'F'))
         );
         """)
+    
+
     conexao.commit()
     cursor.close()
     conexao.close()
@@ -32,13 +35,15 @@ def cadastrar_cliente_tabela(nome,idade,telefone,email,sexo):
                            VALUES (?,?,?,?,?)
                            
                         """,(nome,idade,telefone,email,sexo))
+        
+
         conexao.commit()
         cursor.close()
         conexao.close()
         
 def listar_clientes():
     conexao = conectar()
-    conexao.row_factory = sqlite3.Row  
+    conexao.row_factory = sqlite3.Row
     cursor = conexao.cursor()
     cursor.execute("SELECT * FROM clientes")
     clientes = cursor.fetchall()
@@ -46,7 +51,7 @@ def listar_clientes():
     cursor.close()
     conexao.close()
     return clientes
-    
+
 
 def deletar_cliente(id):
     conexao = conectar()
@@ -144,7 +149,7 @@ def editar_cliente(id, nome=None, idade=None, telefone=None, email=None, sexo=No
     
     if sexo:
         campos.append("sexo = ?")
-        valores.append(email)
+        valores.append(sexo)
     
     valores.append(id)
 

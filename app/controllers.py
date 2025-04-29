@@ -48,7 +48,7 @@ def configurar_rotas(app):
             flash(f"Cliente '{nome}' cadastrado com sucesso!", "sucesso")
             return redirect(url_for('cadastrar_cliente'))
         except Exception as e:
-            flash(f"Erro ao cadastrar produto: {str(e)}", "erro")
+            flash(f"Erro ao cadastrar cliente: {str(e)}", "erro")
             return redirect(url_for('cadastrar_cliente'))
 
     def calcular_idade(data_nasc):
@@ -63,10 +63,22 @@ def configurar_rotas(app):
     @app.route("/editar-cliente/<int:id>", methods=["POST"])
     def editar_cliente(id):
         try:
-            models.editar_cliente(id)
-            return redirect(url_for('gerenciar_clientes'))
+            if request.is_json:
+                data = request.get_json()
+                nome = data.get('nome')
+                idade = data.get('idade')
+                telefone = data.get('telefone')
+                email = data.get('email')
+                sexo = data.get('sexo')
+
+                models.editar_cliente(id, nome=nome, idade=idade, telefone=telefone, email=email, sexo=sexo)
+                return '', 204  # sucesso sem conteúdo
+            else:
+                
+                return redirect(url_for("gerenciar_clientes"))
         except Exception as e:
-            return redirect(url_for('gerenciar_clientes'))
+           
+            return redirect(url_for("gerenciar_clientes"))
     
 
     @app.route("/deletar/<int:id>", methods=["POST"])
