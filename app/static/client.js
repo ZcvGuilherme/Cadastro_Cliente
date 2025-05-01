@@ -138,6 +138,7 @@ function cancelarEdicao(botao, valores) {
     `;
 }
 
+
 function confirmarEdicao(botao, id) {
     const linha = botao.closest('tr');
     const inputs = linha.querySelectorAll('input');

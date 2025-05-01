@@ -55,8 +55,8 @@
                         <form class="form01" action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar o produto?');">
                             <button type="submit">Excluir</button>
                         </form>
-                        <form class="form01" action="{{ url_for('editar_produto', id=produto.id) }}" method="post" >
-                            <button type="submit">Editar</button>
+                        <form class="form01" onsubmit="return false">
+                            <button type="button" onclick="editarLinha(this)">Editar</button>
                         </form>
                     </td>
                 </tr>
