@@ -8,7 +8,6 @@ def conectar():
 def criar_tabela_clientes():
     conexao = conectar()
     cursor = conexao.cursor()
-    
 
     cursor.execute("""
             CREATE TABLE IF NOT EXISTS clientes (
@@ -21,7 +20,6 @@ def criar_tabela_clientes():
         );
         """)
     
-
     conexao.commit()
     cursor.close()
     conexao.close()
@@ -36,22 +34,9 @@ def cadastrar_cliente_tabela(nome,idade,telefone,email,sexo):
                            
                         """,(nome,idade,telefone,email,sexo))
         
-
         conexao.commit()
         cursor.close()
         conexao.close()
-        
-def listar_clientes():
-    conexao = conectar()
-    conexao.row_factory = sqlite3.Row
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM clientes")
-    clientes = cursor.fetchall()
-    
-    cursor.close()
-    conexao.close()
-    return clientes
-
 
 def deletar_cliente(id):
     conexao = conectar()
@@ -63,33 +48,6 @@ def deletar_cliente(id):
     cursor.close()
     conexao.close()
 
-def buscar_por_nome(nome):
-    conexao = conectar()
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM clientes WHERE nome LIKE ?", ('%' + nome + '%',))
-    clientes = cursor.fetchall()
-    cursor.close()
-    conexao.close()
-    return clientes
-
-def buscar_por_telefone(telefone):
-    conexao = conectar()
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM clientes WHERE telefone LIKE ?", ('%' + telefone + '%',))
-    clientes = cursor.fetchall()
-    cursor.close()
-    conexao.close()
-    return clientes
-
-def buscar_por_email(email):
-    conexao = conectar()
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM clientes WHERE email LIKE ?", ('%' + email + '%',))
-    clientes = cursor.fetchall()
-    cursor.close()
-    conexao.close()
-    return clientes
-busca=''
 def buscar_clientes_ordenado(campo='id', busca='', ordem=True):
     """busca=''
     Busca clientes no banco de dados filtrando por nome ou e-mail e ordena os resultados.
@@ -201,8 +159,6 @@ def buscar_produtos_ordenado(campo='id', busca='', ordem=True):
 
     return produtos
 
-
-
 def cadastrar_produto(nome, valor, quantidade):
     conexao = conectar_produtos()
     cursor = conexao.cursor()
@@ -213,17 +169,6 @@ def cadastrar_produto(nome, valor, quantidade):
     conexao.commit()
     cursor.close()
     conexao.close()
-
-
-def listar_produtos():
-    conexao = conectar_produtos() 
-    conexao.row_factory = sqlite3.Row 
-    cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM produtos")
-    produtos = cursor.fetchall()
-    cursor.close()
-    conexao.close()
-    return produtos
 
 def deletar_produto(id):
     conexao = conectar_produtos()

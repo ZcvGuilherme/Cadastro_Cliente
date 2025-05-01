@@ -26,8 +26,6 @@ def configurar_rotas(app):
 
 
 
-
-
 #---------------------------------------ROTAS CLIENTES----------------------------------#
     @app.route("/novo_cliente", methods=['POST'])
     def novo_cliente():
