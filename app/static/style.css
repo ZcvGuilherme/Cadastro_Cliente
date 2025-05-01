@@ -19,17 +19,13 @@ body {
 .container01{
     text-align: center; /* Centraliza o texto do h1 */
     background-color: rgb(196, 237, 224);
-    width: 500px;         /* largura fixa */
-    width: 80%;           /* 80% da largura da página/pai */
-    max-width: 800px;     /* não passa de 800px */
+    
 }
 
 .container02{
     text-align: center; /* Centraliza o texto do h1 */
     background-color: rgb(196, 237, 224);
-    width: 500px;         /* largura fixa */
-    width: 100%;           /* 80% da largura da página/pai */
-    max-width: 400px;     /* não passa de 800px */
+    
 }
 
 .th {
