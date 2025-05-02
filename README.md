@@ -43,10 +43,10 @@ Cadastro/
 ## ⚙️ Como executar o Projeto
 
 1. Clone o repositório:
-   ```
-   git clone https://github.com/ZcvGuilherme/Cadastro_Cliente.git
-   cd Cadastro_Cliente
-   ```
+```
+git clone https://github.com/ZcvGuilherme/Cadastro_Cliente.git
+cd Cadastro_Cliente
+```
 2. Crie um ambiente virtual (opcional):
   ```bash
   python -m venv venv
