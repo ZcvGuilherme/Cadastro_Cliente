@@ -61,3 +61,6 @@ cd Cadastro_Cliente
   python main.py
   ```
 
+## ✨ Contribuições
+Esse projeto foi projetado e desenvolvido por:
+- [![GitHub: ZcvGuilherme](https://img.shields.io/github/followers/ZcvGuilherme?label=follow&style=social)](https://github.com/ZcvGuilherme)
