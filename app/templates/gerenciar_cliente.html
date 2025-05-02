@@ -21,17 +21,17 @@
             <thead>
                 <tr>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='id', ordem='desc' if campo == 'id' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='id', ordem='desc' if campo == 'id' and ordem else 'asc') }}">
                             ID
                         </a>
                     </th>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='nome', ordem='desc' if campo == 'nome' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='nome', ordem='desc' if campo == 'nome' and ordem else 'asc') }}">
                             Nome
                         </a>
                     </th>
                     <th>
-                        <a href="{{ url_for('gerenciar_clientes', campo='idade', ordem='desc' if campo == 'idade' and ordem == 'asc' else 'asc', pesquisa=request.args.get('pesquisa', '')) }}">
+                        <a href="{{ url_for('gerenciar_clientes', campo='idade', ordem='desc' if campo == 'idade' and ordem else 'asc') }}">
                             Idade
                         </a>
                     </th>
