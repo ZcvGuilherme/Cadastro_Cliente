@@ -63,4 +63,8 @@ cd Cadastro_Cliente
 
 ## ✨ Contribuições
 Esse projeto foi projetado e desenvolvido por:
-- [![GitHub: ZcvGuilherme](https://img.shields.io/github/followers/ZcvGuilherme?label=follow&style=social)](https://github.com/ZcvGuilherme)
+- [@ZcvGuilherme](https://github.com/ZcvGuilherme)
+- [@Carvalhop2](https://github.com/Carvalhop2)
+- [@Kostela0](https://github.com/Kostela0)
+- [@Carvalho16py](https://github.com/Carvalho16py)
+
