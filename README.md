@@ -3,7 +3,7 @@
 Sistema de gerenciamento e cadastro de produtos e clientes utilizando o framework Flask para a web, SQLite para banco de dados e Python como linguagem dominante, visando aplicar a arquitetura MVC (Model-View-Controller).
 
 ## 🚀 Funcionalidades 
-- Cadastro de clientes de produtos
+- Cadastro de clientes e produtos
 - Persistência dos dados com SQLite
 - Interface simples e interativa para gerenciar os objetos cadastrados
 
