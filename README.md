@@ -5,7 +5,7 @@ Sistema de gerenciamento e cadastro de produtos e clientes utilizando o framewor
 ## 🚀 Funcionalidades 
 - Cadastro de clientes de produtos
 - Persistência dos dados com SQLite
-- Interface simples e interativa para manusear
+- Interface simples e interativa para gerenciar os objetos cadastrados
 
 ## 🛠 Tecnologias Utilizadas
 - Python
